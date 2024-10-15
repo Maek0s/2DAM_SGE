@@ -36,11 +36,12 @@ txt = "Hola me llamo Marcos Zahonero"
 palabras = txt.split()
 
 # ● Comentaris amb una línia
-# Això és un comentari d'una línia
+# Comentario de una linea, se consigue con "#" al inicio de la línea
 
 # ● Comentaris multilínia
 """
-Això és un comentari
-multilínia que pot
-ocupar diverses línies
+Esto es un comentario
+en bloque/multilínea
+se inicia con tres comillas dobles
+al inicio y final
 """
