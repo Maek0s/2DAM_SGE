@@ -4,8 +4,6 @@ Fecha: 19/10/2024
 Descripción: Actividad 4, comprobación de campo de minas.
 '''
 
-# falta pillar la string y meterla en lista
-
 def contandoCampo(miCampo, i, j):
     contador = 0
 
