@@ -48,10 +48,10 @@ if __name__ == "__main__":
     # CARPETA QUE EL ARCHIVO "exempleEntrada.txt" Y "exempleSalida.txt" SINO NO FUNCIONA
 
     # Abre el archivo y lee los números
-    with open("exempleEntrada.txt", "r") as file:
+    with open("actividad07Txts/exempleEntrada.txt", "r") as file:
         numeros = file.readlines()
 
-    doctest.testfile("exempleEntrada.txt")
+    doctest.testfile("actividad07Txts/exempleEntrada.txt")
 
     for linea in numeros:
         numero = int(linea.strip())  # Convierte cada línea en un número
@@ -67,7 +67,7 @@ if __name__ == "__main__":
         
     file.close()
 
-    with open("exempleSalida.txt", "w") as file:
+    with open("actividad07Txts/exempleSalida.txt", "w") as file:
         file.write(f"Hay {palindromos} números palindromos.\n")
         file.write(f"Hay {primos} números primos.\n")
         for numero in dobles:
