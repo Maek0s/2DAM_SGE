@@ -1,3 +1,9 @@
+'''
+Autor: Marcos Zahonero
+Fecha: 19/10/2024
+Descripción: Actividad 2, comprobación de un sudoku.
+'''
+
 def esSudokuCorrecto(sudoku, i, j):
     tempI = i
     tempJ = j
@@ -52,7 +58,8 @@ for i in range(len(sudoku)):
             contadorNumsMal += 1
         else:
             contadorNumsBien += 1
-        # Pruebas de cada numero: print(resultado, "- Number:", sudoku[i][j], " i:", i, "j:", j)
+        # Pruebas de cada numero:
+        print(esSudokuCorrecto(sudoku, i, j), "- Number:", sudoku[i][j], " i:", i, "j:", j)
 
 print("\nNumeros bien colocados:", contadorNumsBien)
 print("Numero mal colocados:", contadorNumsMal)

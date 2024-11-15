@@ -1,3 +1,9 @@
+'''
+Autor: Marcos Zahonero
+Fecha: 19/10/2024
+Descripción: Actividad 4, comprobación de campo de minas.
+'''
+
 # falta pillar la string y meterla en lista
 
 def contandoCampo(miCampo, i, j):
@@ -56,12 +62,20 @@ def contandoCampo(miCampo, i, j):
 
     return contador
 
+def obtener_campo(filas):
+    campo = []
+    for i in range(filas):
+        fila = input().split()
+        campo.append(fila)
+    return campo
 
-miCampo = [["0", "0", "-1", "0"],
-           ["0", "-1", "-1", "0"]]
+miCampo = obtener_campo(2) # Aquí indicas las filas que soportará el campo
+# Las columnas debes respetar la primera decisión y no hacer menos columnas en una que otra
 
-buscaMinas = [["0", "0", "0", "0"],
-           ["0", "0", "0", "0"]]
+buscaMinas = [
+        ["0" for _ in range(len(miCampo[0]))]
+        for _ in range(len(miCampo))
+    ]
 
 for i in range(len(miCampo)):
     for j in range(len(miCampo[i])):

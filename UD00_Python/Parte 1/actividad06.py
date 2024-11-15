@@ -1,3 +1,9 @@
+'''
+Autor: Marcos Zahonero
+Fecha: 18/10/2024
+Descripción: Actividad 6, ordenamiento de listas con sorted() y key function.
+'''
+
 # Lista con varias listas con los valores: [altura, peso]
 lista = [
     [180, 75],

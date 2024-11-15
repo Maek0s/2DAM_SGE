@@ -1,6 +1,6 @@
 '''
 Autor: Marcos Zahonero
-Fecha: 15/10/2024
+Fecha: 16/10/2024
 Descripción: Actividad 5, input de información y sobrecarga de funciones
 '''
 

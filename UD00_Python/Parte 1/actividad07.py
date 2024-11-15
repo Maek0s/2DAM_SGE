@@ -1,3 +1,9 @@
+'''
+Autor: Marcos Zahonero
+Fecha: 18/10/2024
+Descripción: Actividad 7, creación de una clase Car y generación de coches.
+'''
+
 import random
 
 class Car:
