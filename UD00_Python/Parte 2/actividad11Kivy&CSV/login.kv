@@ -1,0 +1,68 @@
+Screen:
+
+    MDCard:
+        size_hint: None, None
+        size: 300, 400
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        elevation: 0
+        padding: 25
+        spacing: 25
+        orientation: 'vertical'
+
+        MDLabel:
+            id: lblWelcome
+            text: "Bienvenido"
+            font_size: 40
+            halign: 'center'
+            size_hint_y: None
+            height: self.texture_size[1]
+            padding_y: 15
+
+        MDTextField:
+            id: username
+            hint_text: "Usuario"
+            icon_right: "account"
+            helper_text: "Ingrese su usuario"
+            icon_right_color: app.theme_cls.primary_color
+            size_hint_x: None
+            width: 200
+            font_size: 18
+            pos_hint: {"center_x": 0.5}
+
+        MDTextField:
+            id: password
+            hint_text: "Contraseña"
+            helper_text: "Ingrese su contraseña"
+            icon_right: "eye-off"
+            icon_right_color: app.theme_cls.primary_color
+            size_hint_x: None
+            width: 200
+            font_size: 18
+            pos_hint: {"center_x": 0.5}
+            password: True
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: None, None
+            width: self.minimum_width
+            height: self.minimum_height
+            spacing: 10
+            pos_hint: {'center_x': .5}
+
+            MDRoundFlatButton:
+                text: "Login"
+                on_press: app.login()
+                font_size: 12
+                size_hint: None, None
+                size: 100, 40
+
+            MDRoundFlatButton:
+                text: "Borrar"
+                on_press: app.clear()
+                font_size: 12
+                size_hint: None, None
+                size: 100, 40
+
+        Widget:
+            size_hint_y: None
+            height: 5
