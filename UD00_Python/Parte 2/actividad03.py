@@ -5,30 +5,45 @@ Descripción: Actividad 3, identificar el número de patrones.
 '''
 
 def numeroPatrones(text):
+    # Lista de patrones a buscar
     listasPatrones = ["00","101","ABC","HO"]
+
+    # Resultado de los patrones
     resultadoPatrones = [0,0,0,0]
 
-    ptr00 = 0 # Patrón 00
-    ptr101 = 0 # Patrón 101
-    ptrABC = 0 # Patrón ABC
-    ptrHO = 0 # Patrón HO
-
-    # puedo hacer un for con todos los patrones y que checkee la iteracion para sumar
-    # checkear tambien si tiene siguiente caracter y arreglar cuando son 2 caracteres en vez de 3
     for i in range(len(listasPatrones)):
-        for j in range(len(text)):
-            if (text[j:len(text)] in listasPatrones[i]):
+        # Longitud del patrón elegido
+        patron_len = len(listasPatrones[i])
+        for j in range(len(text) - patron_len + 1):
+            # Comprueba si el patrón se encuentra en el texto cogiendo la longitud del patrón
+            if text[j:j + patron_len] == listasPatrones[i]:
                 resultadoPatrones[i] += 1
-                print(text[j:len(text)], i, listasPatrones[i])
-                
-    return resultadoPatrones
+    
+    # Muestra el resultado utilizando un método
+    displayResult(text, resultadoPatrones)
 
-
+# Muestra el resultado de los patrones
+def displayResult(text, result):
+    print(f"El texto \"{text}\" contiene los siguientes patrones:")
+    print("00:", result[0])
+    print("101:", result[1])
+    print("ABC:", result[2])
+    print("HO:", result[3], "\n")
 
 if __name__ == '__main__':
-    # Tests #
+    # Lista con pruebas para numeroPatrones
+    pruebas = [
+        "000",          # 00: 2
+        "101",          # 101: 1
+        "DABCABC",      # ABC: 2
+        "HOHOHO",       # HO: 3
+        "0010101",      # 00: 1, 101: 2
+        "ABCHOHO",      # ABC: 1, HO: 2
+        "00ABC101HO",   # 00: 1, 101: 1, ABC: 1, HO: 1
+        "000101ABC",    # 00: 2, 101: 1, ABC: 1
+        "HO10100ABC",   # 00: 1, 101: 1, ABC: 1, HO: 1
+        "10100HOABC"    # 00: 1, 101: 1, ABC: 1, HO: 1
+    ]
 
-    print(numeroPatrones("000")) # 00: 2
-    #numeroPatrones("101") # 101: 1
-    #numeroPatrones("DABCABC") # ABC: 2
-    #numeroPatrones("HOHOHO") # HO: 3
+    for prueba in pruebas:
+        numeroPatrones(prueba)
