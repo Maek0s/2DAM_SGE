@@ -1,0 +1,148 @@
+<odoo>
+  <data>
+   <!-- CICLO -->
+    <!-- Definición de ventana -->
+    <record id="instituto_ciclo_action_window" model="ir.actions.act_window">
+      <field name="name">Lista ciclos</field>
+      <field name="res_model">instituto.ciclo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Vista TREE -->
+    <record model="ir.ui.view" id="instituto_ciclo_list">
+      <field name="name">Lista ciclos</field>
+      <field name="model">instituto.ciclo</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="modulos"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Formulario -->
+    <record id="instituto_ciclo_view_form" model="ir.ui.view">
+      <field name="name">instituto.ciclo.view.form</field>
+      <field name="model">instituto.ciclo</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="modulos"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+  <!-- MODULO -->
+
+    <!-- Definición de ventana -->
+    <record id="instituto_modulo_action_window" model="ir.actions.act_window">
+      <field name="name">Lista modulos</field>
+      <field name="res_model">instituto.modulo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Vista TREE -->
+    <record id="insitututo_modulo_view_tree" model="ir.ui.view">
+      <field name="name">insitututo.modulo.view.tree</field>
+      <field name="model">instituto.modulo</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="ciclo"/>
+          <field name="alumnos"/>
+          <field name="profesores"/>
+        </tree>
+      </field>
+    </record>
+
+  <!-- ALUMNO -->
+
+    <!-- Definición de ventana -->
+    <record id="instituto_alumno_action_window" model="ir.actions.act_window">
+      <field name="name">Lista alumnos</field>
+      <field name="res_model">instituto.alumno</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Vista TREE -->
+    <record id="insitututo_alumno_view_tree" model="ir.ui.view">
+      <field name="name">insitututo.alumno.view.tree</field>
+      <field name="model">instituto.alumno</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="modulos"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Formulario -->
+    <record id="instituto_alumno_view_form" model="ir.ui.view">
+      <field name="name">instituto.alumno.view.form</field>
+      <field name="model">instituto.alumno</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="modulos"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+  <!-- PROFESOR -->
+
+    <!-- Definición de ventana -->
+    <record id="instituto_profesor_action_window" model="ir.actions.act_window">
+      <field name="name">Lista profesores</field>
+      <field name="res_model">instituto.profesor</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Vista TREE -->
+    <record id="insitututo_profesor_view_tree" model="ir.ui.view">
+      <field name="name">insitututo.profesor.view.tree</field>
+      <field name="model">instituto.profesor</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="modulos"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Formulario -->
+    <record id="instituto_profesor_view_form" model="ir.ui.view">
+      <field name="name">instituto.profesor.view.form</field>
+      <field name="model">instituto.profesor</field>
+      <field name="arch" type="xml">
+        <form string="">
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="modulos"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem name="Instituto (Marcos)" id="instituto.menu_root"/>
+
+    <menuitem name="Ciclos" id="instituto.ciclo_menu" parent="instituto.menu_root"
+              action="instituto_ciclo_action_window"/>
+    <menuitem name="Modulos" id="instituto.modulo_menu" parent="instituto.menu_root"
+              action="instituto_modulo_action_window"/>
+    <menuitem name="Alumnos" id="instituto.alumno_menu" parent="instituto.menu_root"
+              action="instituto_alumno_action_window"/>
+    <menuitem name="Profesores" id="instituto.profesor_menu" parent="instituto.menu_root"
+              action="instituto_profesor_action_window"/>
+  </data>
+</odoo>

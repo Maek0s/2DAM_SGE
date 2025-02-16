@@ -1,0 +1,224 @@
+<odoo>
+    <data>
+        <!-- Vistas para Empleados -->
+        <record id="view_empleado_tree" model="ir.ui.view">
+            <field name="name">empresa_repartidores.empleado.tree</field>
+            <field name="model">empresa_repartidores.empleado</field>
+            <field name="arch" type="xml">
+                <tree string="Empleados">
+                    <field name="name"/>
+                    <field name="apellido"/>
+                    <field name="dni"/>
+                    <field name="telefono"/>
+                    <field name="carnet_ciclomotor"/>
+                    <field name="carnet_furgoneta"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_report_repartimientos_pendientes_document" model="ir.actions.report">
+            <field name="name">Imprimir Repartimientos Pendientes</field>
+            <field name="model">empresa_repartidores.empleado</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">empresa_repartidores.report_repartimientos_pendientes_document</field>
+            <field name="print_report_name">'Repartimientos de ' + object.name</field>
+        </record>
+
+        <record id="view_empleado_form" model="ir.ui.view">
+            <field name="name">empresa_repartidores.empleado.form</field>
+            <field name="model">empresa_repartidores.empleado</field>
+            <field name="arch" type="xml">
+                <form string="Empleado">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="apellido"/>
+                            <field name="dni"/>
+                            <field name="telefono"/>
+                        </group>
+                        <group>
+                            <field name="carnet_ciclomotor"/>
+                            <field name="carnet_furgoneta"/>
+                        </group>
+                        <group>
+                            <field name="foto" widget="image"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                    <button name="%(action_report_repartimientos_pendientes_document)d"
+                            string="Imprimir Pendientes"
+                            type="action"
+                            class="oe_highlight"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vistas para Vehículos -->
+        <record id="view_vehiculo_tree" model="ir.ui.view">
+            <field name="name">empresa_repartidores.vehiculo.tree</field>
+            <field name="model">empresa_repartidores.vehiculo</field>
+            <field name="arch" type="xml">
+                <tree string="Vehículos">
+                    <field name="name"/>
+                    <field name="matricula"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_vehiculo_form" model="ir.ui.view">
+            <field name="name">empresa_repartidores.vehiculo.form</field>
+            <field name="model">empresa_repartidores.vehiculo</field>
+            <field name="arch" type="xml">
+                <form string="Vehículo">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="matricula"/>
+                        </group>
+                        <group>
+                            <field name="descripcion"/>
+                            <field name="foto" widget="image"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vistas para Clientes -->
+        <record id="view_cliente_tree" model="ir.ui.view">
+            <field name="name">empresa_repartidores.cliente.tree</field>
+            <field name="model">empresa_repartidores.cliente</field>
+            <field name="arch" type="xml">
+                <tree string="Clientes">
+                    <field name="dni"/>
+                    <field name="name"/>
+                    <field name="apellido"/>
+                    <field name="telefono"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_cliente_form" model="ir.ui.view">
+            <field name="name">empresa_repartidores.cliente.form</field>
+            <field name="model">empresa_repartidores.cliente</field>
+            <field name="arch" type="xml">
+                <form string="Cliente">
+                    <sheet>
+                        <group>
+                            <field name="dni"/>
+                            <field name="name"/>
+                            <field name="apellido"/>
+                            <field name="telefono"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Vistas para Repartimientos -->
+        <record id="view_repartimiento_tree" model="ir.ui.view">
+            <field name="name">empresa_repartidores.repartimiento.tree</field>
+            <field name="model">empresa_repartidores.repartimiento</field>
+            <field name="arch" type="xml">
+                <tree string="Repartimientos"
+                      decoration-danger="estado=='no_eixit'"
+                      decoration-warning="estado=='de_cami'"
+                      decoration-success="estado=='entregada'">
+                    <field name="code"/>
+                    <field name="fecha_recepcion"/>
+                    <field name="repartidor_id"/>
+                    <field name="vehiculo_id"/>
+                    <field name="km"/>
+                    <field name="estado"/>
+                    <field name="urgencia"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Formulario -->
+        <record id="view_repartimiento_form" model="ir.ui.view">
+            <field name="name">empresa_repartidores.repartimiento.form</field>
+            <field name="model">empresa_repartidores.repartimiento</field>
+            <field name="arch" type="xml">
+                <form string="Repartimiento">
+                    <sheet>
+                        <group>
+                            <field name="code"/>
+                            <field name="fecha_recepcion"/>
+                        </group>
+                        <group>
+                            <field name="fecha_inicio"/>
+                            <field name="fecha_retorno"/>
+                        </group>
+                        <group>
+                            <field name="repartidor_id"/>
+                            <field name="vehiculo_id"/>
+                        </group>
+                        <group>
+                            <field name="km"/>
+                            <field name="peso"/>
+                            <field name="volumen"/>
+                        </group>
+                        <group>
+                            <field name="observaciones"/>
+                            <field name="estado"/>
+                            <field name="urgencia"/>
+                        </group>
+                        <group>
+                            <field name="client_emisor_id"/>
+                            <field name="client_receptor_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Acción de Repartimientos -->
+        <record id="action_repartimientos" model="ir.actions.act_window">
+            <field name="name">Repartimientos</field>
+            <field name="res_model">empresa_repartidores.repartimiento</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menús y Acciones -->
+        <!-- Menú raíz -->
+        <menuitem id="menu_empresa_repartidores_root" name="Empresa Repartidores" sequence="10"/>
+        
+        <!-- Menú de Configuración -->
+        <menuitem id="menu_empresa_repartidores_config" name="Configuración" parent="menu_empresa_repartidores_root" sequence="10"/>
+        <menuitem id="menu_empresa_repartidores_empleados" name="Empleados" parent="menu_empresa_repartidores_config" sequence="1"/>
+        <menuitem id="menu_empresa_repartidores_vehiculos" name="Vehículos" parent="menu_empresa_repartidores_config" sequence="2"/>
+        <menuitem id="menu_empresa_repartidores_clientes" name="Clientes" parent="menu_empresa_repartidores_config" sequence="3"/>
+
+        <!-- Menú de Repartimientos -->
+        <menuitem id="menu_empresa_repartidores_repartiments" name="Repartimientos" parent="menu_empresa_repartidores_root" sequence="20"/>
+
+        <!-- Acciones -->
+        <record id="action_empleados" model="ir.actions.act_window">
+            <field name="name">Empleados</field>
+            <field name="res_model">empresa_repartidores.empleado</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_vehiculos" model="ir.actions.act_window">
+            <field name="name">Vehículos</field>
+            <field name="res_model">empresa_repartidores.vehiculo</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_clientes" model="ir.actions.act_window">
+            <field name="name">Clientes</field>
+            <field name="res_model">empresa_repartidores.cliente</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        
+
+        <!-- Enlace de Acciones a los Menús -->
+        <menuitem id="menu_empleados" name="Empleados" parent="menu_empresa_repartidores_config" action="action_empleados"/>
+        <menuitem id="menu_vehiculos" name="Vehículos" parent="menu_empresa_repartidores_config" action="action_vehiculos"/>
+        <menuitem id="menu_clientes" name="Clientes" parent="menu_empresa_repartidores_config" action="action_clientes"/>
+        <menuitem id="menu_repartiments" name="Repartimientos" parent="menu_empresa_repartidores_root" action="action_repartimientos"/>
+    </data>
+</odoo>

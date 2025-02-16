@@ -1,0 +1,56 @@
+<odoo>
+    <data>
+        <!-- Vista del formulario del wizard -->
+        <record id="view_repartimiento_wizard_form" model="ir.ui.view">
+            <field name="name">empresa_repartidores.repartimiento.wizard.form</field>
+            <field name="model">empresa_repartidores.repartimiento_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Crear Repartimiento">
+                    <sheet>
+                        <group>
+                            <field name="repartidor_id"/>
+                            <field name="vehiculo_id"/>
+                        </group>
+                        <group>
+                            <field name="fecha_inicio"/>
+                            <field name="fecha_retorno"/>
+                        </group>
+                        <group>
+                            <field name="fecha_recepcion"/>
+                            <field name="km"/>
+                        </group>
+                        <group>
+                            <field name="peso"/>
+                            <field name="volumen"/>
+                        </group>
+                        <group>
+                            <field name="urgencia"/>
+                        </group>
+                        <group>
+                            <field name="client_emisor_id"/>
+                            <field name="client_receptor_id"/>
+                        </group>
+                        <group>
+                            <field name="observaciones"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string="Crear Repartimiento" type="object" name="action_create_repartimiento" class="btn-primary"/>
+                        <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Acción para abrir el wizard -->
+        <record id="action_repartimiento_wizard" model="ir.actions.act_window">
+            <field name="name">Crear Repartimiento</field>
+            <field name="res_model">empresa_repartidores.repartimiento_wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_empresa_repartimiento_wizard" name="Crear repartimiento"
+          parent="menu_empresa_repartidores_root" action="action_repartimiento_wizard"/>
+    </data>
+</odoo>

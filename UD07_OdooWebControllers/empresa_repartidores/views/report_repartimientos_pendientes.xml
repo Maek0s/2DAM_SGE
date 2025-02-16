@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="empresa_repartidores.report_repartimientos_pendientes_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="empleado">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <h2>Repartimientos Pendientes de <t t-esc="empleado.name"/></h2>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Fecha Recepción</th>
+                                    <th>Vehículo</th>
+                                    <th>Estado</th>
+                                    <th>Urgencia</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="empleado.repartimiento_ids.filtered(lambda r: r.estado == 'no_eixit')" t-as="repartimiento">
+                                    <tr>
+                                        <td><t t-esc="repartimiento.code"/></td>
+                                        <td><t t-esc="repartimiento.fecha_recepcion"/></td>
+                                        <td><t t-esc="repartimiento.vehiculo_id.name or 'Sin vehículo'"/></td>
+                                        <td><t t-esc="repartimiento.estado"/></td>
+                                        <td><t t-esc="repartimiento.urgencia"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+    <record id="action_report_repartimientos_pendientes" model="ir.actions.report">
+        <field name="name">Imprimir Repartimientos Pendientes</field>
+        <field name="model">empresa_repartidores.empleado</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_file">empresa_repartidores.report_repartimientos_pendientes_document</field>
+        <field name="report_name">empresa_repartidores.report_repartimientos_pendientes_document</field>
+        <field name="print_report_name">'Repartimientos de ' + object.name</field>
+    </record>
+</odoo>
